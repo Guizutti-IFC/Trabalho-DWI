@@ -12,7 +12,7 @@ function getTaskInfo(){
         }
 
 function addTaskOnList(){
-            people.push(getTaskInfo());
+            tasks.push(getTaskInfo());
             document.getElementById('priority').value = '';
             document.getElementById('description').value = '';
             document.getElementById('local').value = '';
@@ -92,4 +92,5 @@ function createTable(){
 
             const container = document.getElementById('list');
             container.appendChild(table)
+
         }
