@@ -1,24 +1,39 @@
 var tasks = []
 
-function getTaskInfo(){
-            return{
-                'priority': document.getElementById('priority').value,
-                'description': document.getElementById('description').value,
-                'local': document.getElementById('local').value,
-                'recourses': document.getElementById('recourses').value,
-                'limitDate': document.getElementById('limitDate').value,
-                'enroll': document.getElementById('enroll').value
-            }
+function showTasks(){
+    for(task of tasks){
+        console.log(
+            'priority: ' + task.priority + '. ' +
+            'description: ' + task.description + '. ' +
+            'local: ' + task.local + '. ' +
+            'recourses: ' + task.recourses + '. ' +
+            'limitDate: ' + task.limitDate+ '. ' +
+            'enroll: ' + task.enroll + '. '
+
+            )
         }
+    }
+
+function getTaskInfo(){
+    return{
+        'priority': document.getElementById('priority').value,
+        'description': document.getElementById('description').value,
+        'local': document.getElementById('local').value,
+        'recourses': document.getElementById('recourses').value,
+        'limitDate': document.getElementById('limitDate').value,
+        'enroll': document.getElementById('enroll').value
+        }
+    }
 
 function addTaskOnList(){
-            tasks.push(getTaskInfo());
-            document.getElementById('priority').value = '';
-            document.getElementById('description').value = '';
-            document.getElementById('local').value = '';
-            document.getElementById('recourses').value = '';
-            document.getElementById('limitDate').value = '';
-            document.getElementById('enroll').value = ''
+    tasks.push(getTaskInfo());
+    alert('Informação adicionada')
+    document.getElementById('priority').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('local').value = '';
+    document.getElementById('recourses').value = '';
+    document.getElementById('limitDate').value = '';
+    document.getElementById('enroll').value = ''
 }
 
 function createTable(){
@@ -91,6 +106,12 @@ function createTable(){
             }
 
             const container = document.getElementById('list');
-            container.appendChild(table)
+            if(container) {
+                container.appendChild(table)
+            } else {
+                console.error("Element with id 'list' not found");
+                document.body.appendChild(table)
+            }
 
         }
+
